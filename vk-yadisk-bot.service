@@ -1,0 +1,17 @@
+[Unit]
+Description=VK bot : Яндекс Диск (поиск по названию)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/vk-yadisk-bot
+ExecStart=/opt/vk-yadisk-bot/venv/bin/python3 /opt/vk-yadisk-bot/bot.py
+Restart=always
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+StandardOutput=append:/var/log/vk-yadisk-bot.log
+StandardError=append:/var/log/vk-yadisk-bot.log
+
+[Install]
+WantedBy=multi-user.target
